@@ -65,8 +65,9 @@ async function init() {
     }
   }
 
+  // Always show the last won code (even after the hour) so it can be shown in the store later.
   const initial = limit.getState();
-  if (!initial.canSpin && initial.lastPrize) {
+  if (initial.lastPrize) {
     showResult(resultEl, initial.lastPrize, initial.spunAt);
     startCooldown();
   }
@@ -79,11 +80,12 @@ async function init() {
     resultEl.hidden = true;
 
     const index = pickPrizeIndex(prizes);
+    const prize = prizes[index];
+    // Record before the animation: reloading mid-spin must not grant a re-spin.
+    limit.record(prize);
     rotation = targetRotation(rotation, index, prizes.length);
     await spinWheel(rotor, rotation);
 
-    const prize = prizes[index];
-    limit.record(prize);
     showResult(resultEl, prize, limit.getState().spunAt ?? Date.now());
     resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     spinning = false;

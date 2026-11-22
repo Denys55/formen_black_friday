@@ -29,3 +29,15 @@ test('odd count has no adjacent equal colors', () => {
     }
   }
 });
+
+test('labelFontSize keeps long labels inside the segment', async () => {
+  const { labelFontSize, LABEL_MAX_WIDTH, CHAR_WIDTH_EM } = await import('../js/wheel-geometry.js');
+  for (const label of ['-5%', '-30%', 'Подарунок', 'Безкоштовна доставка']) {
+    for (const n of [2, 6, 12]) {
+      const fs = labelFontSize(label, n);
+      assert.ok(label.length * CHAR_WIDTH_EM * fs <= LABEL_MAX_WIDTH + 1e-9, `${label} n=${n} fs=${fs}`);
+      assert.ok(fs <= Math.min(18, 120 / n) + 1e-9);
+    }
+  }
+  assert.equal(labelFontSize('-5%', 6), 18); // short labels keep the full size
+});

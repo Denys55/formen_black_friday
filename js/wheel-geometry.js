@@ -25,3 +25,15 @@ export function segmentColorIndex(i, n) {
   if (n % 2 === 1 && i === n - 1) return 2;
   return i % 2;
 }
+
+// Labels are centred at LABEL_RADIUS and run radially; they must fit between hub (r≈20) and rim (r=100).
+export const LABEL_RADIUS = 62;
+export const LABEL_MAX_WIDTH = 68;
+export const CHAR_WIDTH_EM = 0.66; // conservative average glyph width for Montserrat 900
+
+/** Font size (SVG units) that fits the label radially and the segment tangentially. */
+export function labelFontSize(label, n) {
+  const bySegment = Math.min(18, 120 / n);
+  const byLength = LABEL_MAX_WIDTH / (Math.max(1, label.length) * CHAR_WIDTH_EM);
+  return Math.min(bySegment, byLength);
+}

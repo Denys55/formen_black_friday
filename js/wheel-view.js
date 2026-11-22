@@ -1,9 +1,8 @@
 /** @typedef {import('./config.js').Prize} Prize */
-import { segmentAngle, segmentColorIndex } from './wheel-geometry.js';
+import { segmentAngle, segmentColorIndex, labelFontSize, LABEL_RADIUS } from './wheel-geometry.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const R = 100;
-const LABEL_RADIUS = 66;
 
 const el = (name, attrs) => {
   const node = document.createElementNS(SVG_NS, name);
@@ -26,7 +25,6 @@ export function renderWheel(rotor, prizes) {
   rotor.replaceChildren();
   const n = prizes.length;
   const seg = segmentAngle(n);
-  const fontSize = Math.max(8, Math.min(18, 120 / n));
 
   prizes.forEach((prize, i) => {
     const cls = `wheel__segment wheel__segment--${segmentColorIndex(i, n)}`;
@@ -45,7 +43,7 @@ export function renderWheel(rotor, prizes) {
     const mid = i * seg + seg / 2;
     const label = el('text', {
       class: 'wheel__segment-label',
-      'font-size': fontSize.toFixed(2),
+      'font-size': labelFontSize(prize.label, n).toFixed(2),
       'text-anchor': 'middle',
       'dominant-baseline': 'central',
       // Radial label along the bisector; flipped on the left half so it never reads upside down.
