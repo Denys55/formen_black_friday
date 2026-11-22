@@ -35,20 +35,6 @@ export async function copyText(text, fallbackEl) {
   }
 }
 
-function renderQr(text) {
-  if (typeof window.qrcode !== 'function') return null; // CDN blocked: show everything else
-  try {
-    const qr = window.qrcode(0, 'M');
-    qr.addData(text);
-    qr.make();
-    const box = h('div', 'result__qr');
-    box.innerHTML = qr.createSvgTag({ cellSize: 5, margin: 2 });
-    box.setAttribute('aria-label', `QR-код промокоду ${text}`);
-    return box;
-  } catch {
-    return null;
-  }
-}
 
 /**
  * @param {HTMLElement} container
@@ -82,9 +68,6 @@ export function showResult(container, prize, spunAt) {
 
   card.append(h('p', 'result__hint',
     'Скопіюйте промокод і вставте його в кошику на сайті for-men.ua. У магазині — покажіть цей екран касиру.'));
-
-  const qr = renderQr(prize.code);
-  if (qr) card.append(qr);
 
   const when = new Date(spunAt).toLocaleString('uk-UA', {
     day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit',

@@ -4,17 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Single-page **Black Friday** promo site for the For Men store (main site: https://for-men.ua). Visitors arrive from the main site, or offline by scanning a QR code on an in-store banner. They spin a discount wheel once and get a discount that comes with a QR code:
-- **Online:** the QR code / promo code is used to redeem the discount on for-men.ua.
+Single-page **Black Friday** promo site for the For Men store (main site: https://for-men.ua). Visitors arrive from the main site, or offline by scanning a QR code on an in-store banner. They spin a discount wheel and get a promo code (no QR code on the result screen: owner decision):
+- **Online:** the customer copies the code and pastes it into the cart on for-men.ua (there is no promo URL parameter).
 - **Offline:** the customer shows the result screen to the cashier.
 
 ## Hard requirements
 
-- **Stack:** plain HTML, CSS, vanilla JavaScript. No frameworks, bundlers, npm, or build step. A small third-party library from a CDN (e.g. for QR generation) is fine.
+- **Stack:** plain HTML, CSS, vanilla JavaScript. No frameworks, bundlers, or build step. `package.json` exists only for `"type": "module"` and `npm test` (`node --test`, no dependencies).
 - **Language:** all user-facing text must be in **Ukrainian**.
 - **Black Friday** branding must be prominent.
 - **Visual style** follows for-men.ua (colors, fonts, logo usage). Check the live site when making design decisions.
-- **Spin limit:** one spin per user per hour. Persist the last spin time (and the won result, so it can be shown again) in `localStorage`. This is a client-side limit only, which is accepted for this stack.
+- **Spin limit:** one spin per user per hour. Persist the last spin time (and the won result, so it can be shown again) in `localStorage`. This is a client-side limit only, which is accepted for this stack. The limit is **not communicated** to the customer: no countdown or "once per hour" text, the spin button is simply disabled.
 - **Links** to the main site and social networks must be present (see below).
 
 ## Data-driven wheel
