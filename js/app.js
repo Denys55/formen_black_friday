@@ -1,7 +1,7 @@
 import { loadConfig } from './config.js';
 import { pickPrizeIndex } from './picker.js';
 import { targetRotation } from './wheel-geometry.js';
-import { createSpinLimit, formatRemaining } from './spin-limit.js';
+import { createSpinLimit } from './spin-limit.js';
 import { renderWheel, spinWheel } from './wheel-view.js';
 import { showResult } from './result-view.js';
 
@@ -18,7 +18,6 @@ function getStorage() {
 async function init() {
   const rotor = $('wheel-rotor');
   const spinBtn = $('spin-btn');
-  const cooldownEl = $('cooldown');
   const resultEl = $('result');
 
   let prizes;
@@ -39,29 +38,22 @@ async function init() {
   let spinning = false;
   let cooldownTimer = null;
 
+  // The limit is not shown to the customer: the button just stays disabled until the hour passes.
   function updateCooldown() {
-    const { canSpin, remainingMs } = limit.getState();
-    if (canSpin) {
+    if (limit.getState().canSpin) {
       clearInterval(cooldownTimer);
       cooldownTimer = null;
-      cooldownEl.hidden = true;
       spinBtn.disabled = false;
       spinBtn.textContent = 'Крутити';
       return;
     }
     spinBtn.disabled = true;
-    cooldownEl.innerHTML = '';
-    cooldownEl.append('Наступна спроба через ');
-    const b = document.createElement('b');
-    b.textContent = formatRemaining(remainingMs);
-    cooldownEl.append(b);
-    cooldownEl.hidden = false;
   }
 
   function startCooldown() {
     updateCooldown();
     if (!cooldownTimer && !limit.getState().canSpin) {
-      cooldownTimer = setInterval(updateCooldown, 1000);
+      cooldownTimer = setInterval(updateCooldown, 15000);
     }
   }
 

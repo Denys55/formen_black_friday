@@ -44,9 +44,3 @@ export function createSpinLimit({ storage, now = Date.now }) {
   };
 }
 
-/** "MM:SS", seconds rounded up. */
-export function formatRemaining(ms) {
-  const total = Math.ceil(Math.max(0, ms) / 1000);
-  const pad = (n) => String(n).padStart(2, '0');
-  return `${pad(Math.floor(total / 60))}:${pad(total % 60)}`;
-}

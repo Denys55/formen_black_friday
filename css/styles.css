@@ -142,13 +142,6 @@ a { color: inherit; }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .btn--spin { margin-top: 24px; min-width: 220px; font-size: 1.15rem; padding: 18px 36px; }
 
-.cooldown {
-  margin: 14px 0 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-  text-align: center;
-}
-.cooldown b { color: var(--white); font-variant-numeric: tabular-nums; }
 
 /* Result */
 .result {

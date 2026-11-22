@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createSpinLimit, formatRemaining, STORAGE_KEY, COOLDOWN_MS } from '../js/spin-limit.js';
+import { createSpinLimit, STORAGE_KEY, COOLDOWN_MS } from '../js/spin-limit.js';
 
 const prize = { code: 'BF10', discount: 10, label: '-10%', weight: 1 };
 
@@ -61,9 +61,3 @@ test('future timestamp does not lock user', () => {
   assert.equal(s.canSpin, true);
 });
 
-test('formatRemaining', () => {
-  assert.equal(formatRemaining(3_599_000), '59:59');
-  assert.equal(formatRemaining(61_000), '01:01');
-  assert.equal(formatRemaining(500), '00:01');
-  assert.equal(formatRemaining(0), '00:00');
-});
