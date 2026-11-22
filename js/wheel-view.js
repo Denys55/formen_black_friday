@@ -48,8 +48,10 @@ export function renderWheel(rotor, prizes) {
       'font-size': fontSize.toFixed(2),
       'text-anchor': 'middle',
       'dominant-baseline': 'central',
-      // Radial label reading outward along the segment's bisector.
-      transform: `rotate(${(mid - 90).toFixed(3)}) translate(${LABEL_RADIUS} 0)`,
+      // Radial label along the bisector; flipped on the left half so it never reads upside down.
+      transform: mid > 180
+        ? `rotate(${(mid + 90).toFixed(3)}) translate(${-LABEL_RADIUS} 0)`
+        : `rotate(${(mid - 90).toFixed(3)}) translate(${LABEL_RADIUS} 0)`,
     });
     label.textContent = prize.label;
     rotor.append(label);
