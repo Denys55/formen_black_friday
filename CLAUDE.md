@@ -19,7 +19,7 @@ Single-page **Black Friday** promo site for the For Men store (main site: https:
 
 ## Data-driven wheel
 
-Promo codes and discount sizes live in a JSON file that the owner edits by hand. The wheel's segments are **generated from that file at runtime**. Never hard-code segments in the HTML or JS: adding or removing an entry in the JSON must change the wheel without touching code. Keep the JSON format simple and easy to edit by hand.
+Promo codes and discount sizes live in a JSON file that the owner edits by hand. The wheel's segments are **generated from that file at runtime**. Never hard-code segments in the HTML or JS: adding or removing an entry in the JSON must change the wheel without touching code. Keep the JSON format simple and easy to edit by hand. Each entry is one wheel segment (`discount`, optional `weight`/`label`) with a `codes` array; the won code is picked uniformly from that array. Codes are random (`FM-XXXXX`, alphabet without 0/O/1/I/L) and must never reveal the discount, because customers could guess higher-tier codes. Every code must also exist in the for-men.ua shop admin.
 
 ## Assets
 

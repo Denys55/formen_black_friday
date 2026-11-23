@@ -1,4 +1,4 @@
-import { loadConfig } from './config.js';
+import { loadConfig, pickCode } from './config.js';
 import { pickPrizeIndex } from './picker.js';
 import { targetRotation } from './wheel-geometry.js';
 import { createSpinLimit } from './spin-limit.js';
@@ -72,7 +72,8 @@ async function init() {
     resultEl.hidden = true;
 
     const index = pickPrizeIndex(prizes);
-    const prize = prizes[index];
+    const tier = prizes[index];
+    const prize = { code: pickCode(tier), discount: tier.discount, label: tier.label, weight: tier.weight };
     // Record before the animation: reloading mid-spin must not grant a re-spin.
     limit.record(prize);
     rotation = targetRotation(rotation, index, prizes.length);

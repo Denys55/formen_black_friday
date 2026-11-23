@@ -1,10 +1,10 @@
 {
   "prizes": [
-    { "code": "BF10", "discount": 10, "weight": 7 },
-    { "code": "BF15", "discount": 15, "weight": 10 },
-    { "code": "BF20", "discount": 20, "weight": 12 },
-    { "code": "BF30", "discount": 30, "weight": 40 },
-    { "code": "BF40", "discount": 40, "weight": 21 },
-    { "code": "BF50", "discount": 50, "weight": 10 }
+    { "discount": 10, "weight": 7, "codes": ["FM-U2DXK", "FM-RKPHB", "FM-AHFWH", "FM-6ZRNM", "FM-M43AX"] },
+    { "discount": 15, "weight": 10, "codes": ["FM-H722N", "FM-4WC5S", "FM-7RNZF", "FM-9NYEU", "FM-ZPMQZ"] },
+    { "discount": 20, "weight": 12, "codes": ["FM-6RFZY", "FM-VS3FC", "FM-MN39V", "FM-V6CZD", "FM-XJ52A"] },
+    { "discount": 30, "weight": 40, "codes": ["FM-FBX5M", "FM-26TC9", "FM-5QPZD", "FM-PSVEF", "FM-XZAZF"] },
+    { "discount": 40, "weight": 21, "codes": ["FM-YFVQ3", "FM-5X5KU", "FM-2KBXV", "FM-C6CCY", "FM-6ZGRH"] },
+    { "discount": 50, "weight": 10, "codes": ["FM-GFWPF", "FM-3YD8A", "FM-8BKWY", "FM-5QW6H", "FM-SARPD"] }
   ]
 }

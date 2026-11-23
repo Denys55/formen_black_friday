@@ -1,4 +1,4 @@
-/** @typedef {import('./config.js').Prize} Prize */
+/** @typedef {import('./config.js').Tier} Tier */
 import { segmentAngle, segmentColorIndex, labelFontSize, LABEL_RADIUS } from './wheel-geometry.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -19,7 +19,7 @@ const point = (deg, r) => {
 /**
  * Draw one sector + label per prize into the rotor group.
  * @param {SVGGElement} rotor
- * @param {Prize[]} prizes
+ * @param {Tier[]} prizes
  */
 export function renderWheel(rotor, prizes) {
   rotor.replaceChildren();

@@ -1,8 +1,8 @@
-/** @typedef {import('./config.js').Prize} Prize */
+/** @typedef {import('./config.js').Tier} Tier */
 
 /**
  * Weighted random choice.
- * @param {Prize[]} prizes
+ * @param {Tier[]} prizes
  * @param {() => number} rng returns [0, 1)
  * @returns {number} index into prizes
  */
