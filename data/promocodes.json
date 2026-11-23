@@ -1,10 +1,10 @@
 {
   "prizes": [
-    { "code": "BF10", "discount": 10, "weight": 10 },
+    { "code": "BF10", "discount": 10, "weight": 7 },
     { "code": "BF15", "discount": 15, "weight": 10 },
-    { "code": "BF20", "discount": 20, "weight": 20 },
-    { "code": "BF30", "discount": 30, "weight": 20 },
-    { "code": "BF40", "discount": 40, "weight": 25 },
-    { "code": "BF50", "discount": 50, "weight": 15 }
+    { "code": "BF20", "discount": 20, "weight": 12 },
+    { "code": "BF30", "discount": 30, "weight": 40 },
+    { "code": "BF40", "discount": 40, "weight": 21 },
+    { "code": "BF50", "discount": 50, "weight": 10 }
   ]
 }
